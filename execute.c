@@ -1,17 +1,19 @@
 #include "shell.h"
 
 /**
- * execute - Executes the commands passes by the user
- * @args: The list of commands and arguments the user typed
- *
- * Return: 1 if suucessful 0 if not
- */
+  * execute - Executes the commands passe by the user
+  * @args: The list of commands and arguments the user typed
+  *
+  * Return: 1 if succesful 0 if not
+  */
 
 int execute(char **args)
 {
-	pid_t  my_pid;
+	pid_t my_pid;
 	char *command = args[0];
 	int status;
+
+
 
 	my_pid = fork();
 	if (my_pid == -1)
@@ -25,13 +27,14 @@ int execute(char **args)
 			command = args[0];
 		else
 			command = get_path(command);
+
 		if (!command)
 		{
 			perror("hsh");
 			return (0);
 		}
 
-		if (execve(command, args, NULL) == 1)
+		if (execve(command, args, NULL) == -1)
 		{
 			perror("hsh");
 		}

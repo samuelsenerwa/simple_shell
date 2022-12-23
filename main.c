@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * main - The function that starts the shell
- *
- * Return: 1 on success
- */
+  * main - The function that starts the shell
+  *
+  * Return: 1 on success
+  */
 
 int main(void)
 {
@@ -18,22 +18,34 @@ int main(void)
 		status = isatty(STDIN_FILENO);
 
 		if (status == 1)
-			write(STDOUT_FILENO, "$", 2);
+			write(STDOUT_FILENO, "$ ", 2);
 
 		line = readline();
 		if (!line)
 		{
 			return (0);
 		}
-		/*Exit comand will have to move it */
+		/* Exit command we will have to move it */
 		if (_strcmp(line, "exit") == 0)
 		{
 			free(line);
 			return (0);
+		}
+		if (_strcmp(line, "env") == 0)
+		{
+			_printenv();
+			free(line);
 			continue;
 		}
 		args = splitline(line);
-		/*Check if args is NULL (malloc failed) */
+		/* Check if args is NULL(Malloc failed) */
+		if (args == NULL)
+		{
+			free(line);
+			free(args);
+			continue;
+		}
+		/* Execute the commands given by user */
 		status = execute(args);
 		free(line);
 		free(args);

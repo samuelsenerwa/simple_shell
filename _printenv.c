@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _printenv - Prints all the environment variables
- *
- */
+  * _printenv - Prints all the environment variables
+  *
+  */
 
 void _printenv(void)
 {

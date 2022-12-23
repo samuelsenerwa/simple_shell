@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strcat - Concatenates two strings passed to it
- * @dest: The destination string
- * @src: The string to be added
- *
- * Return: The pointer to the new string
- */
+  * _strcat - Concatonates two strings passed to it
+  * @dest: The destination string
+  * @src: The string to be added
+  *
+  * Return: Pointer to the new string
+  */
 
 char *_strcat(char *dest, char *src)
 {

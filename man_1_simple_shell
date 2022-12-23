@@ -1,0 +1,47 @@
+.TH hsh 1 "01 April 2021" "Claudette & Tuva version 1.0" "General Commands Manual"
+.hy
+.SH NAME
+.PP
+hsh - A simple UNIX command interpreter
+.PP
+.SH SYNOPSIS
+#include "shell.h"
+
+hsh [options] [command_string | file]
+
+.SH COPYRIGHT
+hsh is Copyright (C) 2021 by Keira Tuva Foundation, Org.
+.SH DESCRIPTION
+.PP
+hsh is an
+.B sh-compatible
+command interpreter.
+
+hsh will work the same way as sh found in(/bin/sh)
+
+.SH OPTIONS
+.PP
+All linux commands work on our shell.
+
+
+.SH EXIT STATUS
+.PP
+Typing exit will exit the shell.
+
+.SH BUGS
+To be determined
+
+.SH AUTHORS
+.PP
+NAME:
+.B Claudette Mokeira
+.RS i
+EMAIL:
+.claudette.keira@gmail.com
+
+.PP
+NAME:
+.B Alfred Tuva
+.RS i
+EMAIL:
+.B muindetuva@gmail.com

@@ -1,10 +1,10 @@
-#include "shell.h"
+#include  "shell.h"
 
 /**
- * readline - Reads the user input from the standard input
- *
- * Return: The line that was read if successful and NULL if it failed
- */
+  * readline - Reads the user input from standard input
+  *
+  * Return: The line that was read if succesful and NULL if it failed
+  */
 
 char *readline(void)
 {

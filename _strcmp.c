@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strcmp - A function to compare two strings
- * @s1: First string
- * @s2: second string
- *
- * Return: 0 if equal, negative value if less tha & positive if greater than
- */
+  * _strcmp - A unction to compare two strings
+  * @s1: First string
+  * @s2: Second string
+  *
+  * Return: 0 if equal, negative value if less than & positive if greater than
+  */
 
 int _strcmp(char *s1, char *s2)
 {

@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * _getenv - finds the environment variable requested by the user
+ * _getenv - finds the environment variable requested by user
  * @name: environment variable requested by user
- * Return: Value of the environment variable
+ * Return: value of the environment variable
  */
 
 char *_getenv(char *name)

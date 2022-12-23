@@ -1,18 +1,19 @@
 #include "shell.h"
 #define BUFSIZE 1024
 /**
- * splitline - Splits a line passed to it and stores the word into an array
- * @line: the line to be split
- * Return: The array of tokens if succesful
- */
+  * splitline - Splits a line passed to it and stores the words into an array
+  * @line: The line to be split
+  *
+  * Return: The array of tokens if succesful
+  */
 
 char **splitline(char *line)
 {
 	int bufsize = BUFSIZE, position = 0;
-	char **tokens = malloc(bufsize *sizeof(char *));
+	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
-	if(!tokens)
+	if (!tokens)
 	{
 		perror("hsh");
 		exit(EXIT_FAILURE);

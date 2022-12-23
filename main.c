@@ -1,54 +1,44 @@
 #include "shell.h"
 
 /**
-  * main - The function that starts the shell
-  *
-  * Return: 1 on success
-  */
-
-int main(void)
+ * main - entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
+ */
+int main(int ac, char **av)
 {
-	int status = 1;
-	char *line;
-	char **args;
+	info_t info[] = { INFO_INIT };
+	int fd = 2;
 
-	signal(SIGINT, sigint_handler);
-	while (status)
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (fd)
+		: "r" (fd));
+
+	if (ac == 2)
 	{
-		status = isatty(STDIN_FILENO);
-
-		if (status == 1)
-			write(STDOUT_FILENO, "$ ", 2);
-
-		line = readline();
-		if (!line)
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
 		{
-			return (0);
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
 		}
-		/* Exit command we will have to move it */
-		if (_strcmp(line, "exit") == 0)
-		{
-			free(line);
-			return (0);
-		}
-		if (_strcmp(line, "env") == 0)
-		{
-			_printenv();
-			free(line);
-			continue;
-		}
-		args = splitline(line);
-		/* Check if args is NULL(Malloc failed) */
-		if (args == NULL)
-		{
-			free(line);
-			free(args);
-			continue;
-		}
-		/* Execute the commands given by user */
-		status = execute(args);
-		free(line);
-		free(args);
+		info->readfd = fd;
 	}
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }
